@@ -331,6 +331,16 @@ header {
                 border-radius: 10%;
                 padding: 0.5rem 1rem;
 
+                &:hover {
+
+                    filter: saturate(8);
+                    transition: filter 0.2s ease-in-out;
+
+                    a {
+                        border: 0;
+                    }
+                }
+
                 @media screen and (max-width: 992px) {
                     background-color: $white !important;
                 }
