@@ -8,9 +8,33 @@ export default {
     data() {
         return {
             data: headerData,
-            isClicked: false
+            isClicked: false,
+            isDesktop: window.innerWidth >= 992,
+            isOpen: false,
         }
     },
+    methods: {
+        toggleAccordion() {
+            if (!this.isDesktop) {
+                this.isOpen = !this.isOpen;
+            }
+        },
+        handleResize() {
+            this.isDesktop = window.innerWidth >= 992;
+            if (this.isDesktop) {
+                this.isOpen = true;
+            } else {
+                this.isOpen = false;
+            }
+        }
+    },
+    mounted() {
+        window.addEventListener('resize', this.handleResize);
+        this.handleResize();
+    },
+    beforeDestroy() {
+        window.removeEventListener('resize', this.handleResize);
+    }
 }
 </script>
 
@@ -96,17 +120,24 @@ export default {
                 <div class="row d-flex flex-column align-items-start">
 
                     <!-- Title -->
-                    <div class="col col-lg-4 title flex justify-content-start gap-3 mb-3">
-                        <h1 class="m-0"><b>Tutti i temi</b></h1><span><i
-                                class="fa-solid fa-chevron-down fs-2 text"></i></span>
+                    <div class="col col-lg-4 title flex justify-content-start gap-3">
+                        <h1 class="m-0"><b>Tutti i temi</b></h1>
+                        <span @click="toggleAccordion" v-if="!isDesktop">
+                            <i :class="['fa-solid', 'fa-chevron-down', 'fs-2', 'text', { 'rotate': isOpen }]"></i>
+                        </span>
                     </div>
 
                     <!-- Buttons -->
-                    <div class="col col-lg-8 buttons flex flex-wrap justify-content-start gap-2">
-                        <div v-for="theme in data.navbar.themes" class="button" :class="'bg-' + theme.bgColor">
-                            <a :href="theme.path">{{ theme.name }}</a>
+                    <transition name="accordion">
+                        <div v-if="isOpen || isDesktop" class=" col col-lg-8 buttons flex flex-wrap
+                            justify-content-start gap-2">
+                            <div v-for="theme in data.navbar.themes" :key="theme.name" class="button"
+                                :class="'bg-' + theme.bgColor">
+                                <a :href="theme.path">{{ theme.name }}</a>
+                            </div>
                         </div>
-                    </div>
+                    </transition>
+
                 </div>
             </div>
         </div>
@@ -204,17 +235,6 @@ header {
         }
     }
 
-    // #menu {
-    //     position: absolute;
-    //     top: calc(100% - 70px);
-
-    //     height: 88vh;
-    //     width: 100%;
-    //     border: solid;
-
-    //     background-color: red;
-    // }
-
     #navbar {
 
         @media screen and (max-width: 992px) {
@@ -258,10 +278,9 @@ header {
     }
 
     #themes {
-        min-height: 150px;
-        background-color: $grey;
-
+        min-height: 80px;
         padding: 2rem 0;
+        background-color: $grey;
 
         .container .row {
             @media screen and (min-width: 992px) {
@@ -280,27 +299,41 @@ header {
         }
 
         .buttons {
+            transition: max-height 0.01s ease-in-out;
+
             @media screen and (min-width: 992px) {
                 justify-content: flex-end !important;
+                max-height: none;
+            }
+
+            .button {
+                color: black;
+                text-transform: uppercase;
+                font-size: 0.8rem;
+                font-weight: 500;
+                border: 1px solid black;
+                box-shadow: -2px 2px 0 black;
+                border-radius: 10%;
+                padding: 0.5rem 1rem;
+
+                @media screen and (max-width: 992px) {
+                    background-color: $white !important;
+                }
             }
         }
 
-        .button {
-            color: black;
-            text-transform: uppercase;
-            font-size: 0.8rem;
-            font-weight: 500;
-            border: 1px solid black;
-            box-shadow: -2px 2px 0 black;
-            border-radius: 10%;
 
-            padding: 0.5rem 1rem;
-
-            @media screen and (max-width: 992px) {
-                background-color: $white !important;
-            }
-
+        .rotate {
+            transform: rotate(180deg);
+            transition: transform 0.1s ease;
         }
     }
+
+    .accordion-enter,
+    .accordion-leave-to {
+        max-height: 0;
+    }
+
+
 }
 </style>
