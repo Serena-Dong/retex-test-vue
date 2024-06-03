@@ -1,4 +1,4 @@
- // Colours
+ // Colors
  $white: #FFFFFF;
  $black: #000000;
 
@@ -7,16 +7,25 @@
  $l-green: #E2F1E8;
  $l-pink: #F1DADA;
  $l-yellow: #F1F1E2;
+ $l-cyan: #E2F0F1;
 
  // 
- .bg-light-green {
+ .bg-grey {
+     background-color: $grey;
+ }
+
+ .bg-l-green {
      background-color: $l-green;
  }
 
- .bg-light-pink {
+ .bg-l-pink {
      background-color: $l-pink;
  }
 
- .bg-light-yellow {
+ .bg-l-yellow {
      background-color: $l-yellow;
+ }
+
+ .bg-l-cyan {
+     background-color: $l-cyan;
  }
