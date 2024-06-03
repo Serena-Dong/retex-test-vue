@@ -31,11 +31,11 @@ export default {
 
         <div class="container-one">
             <div class="row">
-                <div class="col-6">
-                    <Card :card="cards.containerOne.colSix">
+                <div class="col-12 col-lg-6">
+                    <Card :card="cards.containerOne.colMainLeft">
                     </Card>
                 </div>
-                <div class="col-6">
+                <div class="col-12 col-lg-6">
                     <div class="row flex-column">
                         <div class="col-top">
                             <Card :card="cards.containerOne.colTop">
@@ -68,28 +68,37 @@ main {
     }
 
     .intro {
-        height: 400px;
+        height: 450px;
     }
 
     .container-one .row {
-        height: 750px;
+        min-height: 150px;
 
-        // STRUCTURE
-        .col-6 {
-            height: 100%;
-            padding: 0;
+        @media screen and (min-width: 992px) {
+            height: 800px;
         }
 
-        .col-6 .col-top {
+        // STRUCTURE
+        .col-12 {
+            height: 50%;
+            padding: 0;
+
+            @media screen and (min-width: 992px) {
+                height: 100%;
+            }
+        }
+
+        .col-12 .col-top {
             height: 55%;
 
             width: 100%;
         }
 
-        .col-6 .col-bottom {
+        .col-12 .col-bottom {
             height: 45%;
             width: 100%
         }
+
 
 
     }

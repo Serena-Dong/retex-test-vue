@@ -114,7 +114,7 @@ const mainData = {
             }
         },
         containerOne: {
-            colSix: {
+            colMainLeft: {
                 type: "video",
                 img: "video.jpeg",
                 title: "Il collasso dei ghiacciai negli scatti del fotografo ambientale Fabiano Ventura",
@@ -144,14 +144,14 @@ const mainData = {
             },
             colBottom: {
                 type: "text",
-                img: "ucraina.png",
+                img: "ukraine.png",
                 title: "Nelle città italiane tutti in piazza per e con Kiev",
                 author: "Anna Spena",
                 authorImg: "anna-spena.jpeg",
                 date: "14 Luglio 2022",
                 tag: {
                     text: "UCRAINA",
-                    bgColor: "l-cyan"
+                    bgColor: "l-pink"
                 },
             },
 

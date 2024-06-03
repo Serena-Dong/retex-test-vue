@@ -229,7 +229,7 @@ header {
         position: relative;
 
         .col {
-            height: 70px;
+            height: 50px;
 
             &:first-child {
                 border-right: 2px solid;
@@ -293,8 +293,12 @@ header {
 
     #themes {
         min-height: 80px;
-        padding: 2rem 0;
+        padding: 1rem 0;
         background-color: $grey;
+
+        @media screen and (min-width: 992px) {
+            padding: 2rem;
+        }
 
         .container .row {
             @media screen and (min-width: 992px) {

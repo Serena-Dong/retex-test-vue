@@ -11,25 +11,28 @@ export default {
     <div :id="card.type" class="card">
 
         <!-- Img -->
-        <div id="img" class="img-container">
+        <div id="bg-img" class="img-container">
             <img :src="'/img/' + card.img" alt="">
+
+            <!-- Buttons on the img -->
+            <div v-if="card.buttons" class="buttons">
+                <div class="btn img-button">
+                    <a href="">
+                        <i class="fa-regular fa-image"></i></a>
+                </div>
+                <div class="btn play-button">
+                    <a href="">
+                        <i class="fa-solid fa-play"></i>
+                    </a>
+                </div>
+            </div>
         </div>
 
-        <!-- Buttons on the img -->
-        <div v-if="card.buttons" class="buttons">
-            <div class="btn img-button">
-                <a href="">
-                    <i class="fa-regular fa-image"></i></a>
-            </div>
-            <div class="btn play-button">
-                <a href="">
-                    <i class="fa-solid fa-play"></i>
-                </a>
-            </div>
-        </div>
 
         <!-- Texts -->
         <div class="container text-container">
+
+            <!-- TAG -->
             <div id="tag">
                 <p v-if="card.tag" :class="'bg-' + card.tag.bgColor">{{ card.tag.text }}</p>
             </div>
@@ -45,6 +48,8 @@ export default {
             <a id="title" href="">
                 <h4>{{ card.title }}</h4>
             </a>
+
+            <!-- Author -->
             <div id="author">
                 <div class="img-container">
                     <img :src="'/img/authors/' + card.authorImg" alt="">
@@ -60,7 +65,7 @@ export default {
     </div>
 </template>
 
-<style lang="scss" scoped>
+<style lang="scss">
 @import "/src/assets/scss/partials/variables";
 
 // CARD
@@ -73,35 +78,50 @@ export default {
     height: 100%;
 
     // IMG
-    .img-container {
+    #bg-img {
         width: 100%;
         height: 100%;
-
-        position: relative;
-
-        img {
-            filter: brightness(50%);
-        }
-    }
-
-    // TEXT
-    .text-container {
-        position: absolute;
-        bottom: 0;
-        left: 0;
         padding: 1rem;
 
-        width: 100%;
-
-        color: $white;
+        display: none;
+        position: relative;
 
 
         @media screen and (min-width: 992px) {
+            display: block;
+            padding: 0;
+            width: 100%;
+
+            img {
+                filter: brightness(50%);
+            }
+        }
+    }
+
+    .text-container {
+        position: static;
+
+        padding: 1rem;
+
+        @media screen and (min-width: 992px) {
+            position: absolute;
+            bottom: 0;
+            left: 0;
             padding: 2rem 2.5rem;
+
+            color: $white;
+
         }
 
         #title {
-            color: $white;
+            color: $black;
+
+            @media screen and (min-width: 992px) {
+                padding: 1rem;
+
+                color: $white;
+
+            }
 
             &:hover {
                 h4 {
@@ -110,6 +130,7 @@ export default {
                 }
             }
         }
+
 
         #tag p {
             color: black;
@@ -125,14 +146,27 @@ export default {
         }
 
         #podcast {
-            margin-bottom: 1rem;
+            margin: 1rem 0;
+            border: 1px lightgrey solid;
+            border-radius: 2%;
+            padding: 0.3rem;
 
-            .img-container {
+            cursor: pointer;
 
-                img {
-                    filter: brightness(100%)
-                }
+            @media screen and (min-width: 992px) {
+                margin: 0;
+                margin-bottom: 1rem;
+                border: none;
+                border-radius: 0;
+                padding: 0;
             }
+
+            .img-container img {
+                filter: brightness(100%);
+                border-radius: 2%;
+
+            }
+
         }
 
         #author {
@@ -167,12 +201,14 @@ export default {
                 font-weight: 300;
 
                 @media screen and (min-width: 992px) {
+                    color: $white;
                     padding: 0;
+
+                    &>*:not(:last-child) {
+                        margin: 0.6rem 0;
+                    }
                 }
 
-                &>*:not(:last-child) {
-                    margin: 0.6rem 0;
-                }
 
                 p {
                     margin-bottom: 0;
@@ -187,16 +223,17 @@ export default {
                 }
 
                 i.fa-arrow-right {
-                    color: $white;
-                    font-size: 1.2rem;
-
-                    &:hover {
-                        font-size: 1.5rem;
-                        transition: font-size 0.2s ease-in-out;
-                    }
+                    display: none;
 
                     @media screen and (min-width: 992px) {
                         display: block;
+                        color: $white;
+                        font-size: 1.2rem;
+
+                        &:hover {
+                            font-size: 1.5rem;
+                            transition: font-size 0.2s ease-in-out;
+                        }
                     }
                 }
 
@@ -206,33 +243,52 @@ export default {
 
 }
 
-// CARD with Video
-#video {
-    .img-container {
+// IINTRO CARD
+#intro {
+    #bg-img {
         width: 100%;
         height: 100%;
+        padding: 0;
+
+        display: block;
+        position: relative;
+    }
+
+    .text-container {
+        position: absolute;
+        bottom: 0;
+
+        #title,
+        #author {
+            color: $white !important;
+        }
+    }
+
+    #author i.fa-arrow-right {
+        display: none;
+    }
+}
+
+// CARD with Video
+#video {
+    #bg-img {
+        display: block;
         padding: 1rem;
 
         @media screen and (min-width: 992px) {
             padding: 0;
-            width: 100%;
         }
     }
 
     .text-container {
-        position: static;
-        bottom: 0;
-        left: 0;
         padding: 1rem;
-
-        color: $black;
 
         @media screen and (min-width: 992px) {
             position: absolute;
             padding: 3rem;
 
-            width: 100%;
             color: $white;
+
         }
     }
 
@@ -250,7 +306,7 @@ export default {
         .img-button {
             padding: 1rem 1.2rem;
             position: absolute;
-            top: 7rem;
+            bottom: 5rem;
             right: 1rem;
 
             .fa-image {
@@ -260,7 +316,7 @@ export default {
 
         .play-button {
             position: absolute;
-            top: 12.1rem;
+            bottom: 1rem;
             right: 1rem;
             border-radius: 0;
         }
