@@ -15,8 +15,6 @@ export default {
             <img :src="'/img/' + card.img" alt="">
         </div>
 
-
-
         <!-- Buttons on the img -->
         <div v-if="card.buttons" class="buttons">
             <div class="btn img-button">
@@ -39,7 +37,7 @@ export default {
             <!-- Podcast -->
             <div v-if="card.type === 'podcast'" id="podcast">
                 <div class="img-container">
-                    <img src="/public/img/items/podcast.png" alt="">
+                    <img src="/img/items/podcast.png" alt="">
                 </div>
             </div>
 

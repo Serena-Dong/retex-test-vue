@@ -1,10 +1,9 @@
 <script>
 import { headerData } from '../data/data';
-import Button from './contents/Button.vue';
 
 export default {
     name: 'AppHeader',
-    components: { Button },
+    components: {},
     data() {
         return {
             data: headerData,
