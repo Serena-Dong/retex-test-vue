@@ -16,9 +16,13 @@ export default {
 
 <template>
     <header>
+
+        <!-- Logo -->
         <div class="logo">
             <!-- <img src="" alt=""> -->
         </div>
+
+        <!-- Header -->
         <div class="header-top">
             <div class="container">
                 <div class="row justify-content-between">
