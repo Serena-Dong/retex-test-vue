@@ -9,11 +9,19 @@ export default {
         return {
             data: headerData,
             isClicked: false,
+            activeTheme: 'Tutti i temi',
+            activeButton: 'Img',
             isDesktop: window.innerWidth >= 992,
             isOpen: false,
         }
     },
     methods: {
+        setActiveTheme(themeName) {
+            this.activeTheme = themeName;
+        },
+        setActiveButton(buttonName) {
+            this.activeButton = this.activeButton === buttonName ? '' : buttonName;
+        },
         toggleAccordion() {
             if (!this.isDesktop) {
                 this.isOpen = !this.isOpen;
@@ -88,8 +96,6 @@ export default {
             </div>
         </div>
 
-        <!-- <div id="menu"></div> -->
-
         <!-- Navbar -->
         <div id="navbar">
             <div class="container">
@@ -98,22 +104,31 @@ export default {
                     <!-- Links -->
                     <div class="col-10">
                         <ul>
-                            <li><a class="mr-3 fw-semibold" href="">Tutti i temi</a></li>
-                            <li class="ms-4 fw-semibold" v-for="theme in data.navbar.themes">
-                                <a :href="theme.path">{{ theme.name }}</a>
+                            <li>
+                                <a :class="{ 'active': activeTheme === 'Tutti i temi' }" class="mr-3 fw-semibold"
+                                    href="" @click="setActiveTheme('Tutti i temi')">Tutti i temi</a>
+                            </li>
+                            <li v-for="theme in data.navbar.themes" :key="theme.name">
+                                <a :class="{ 'active': activeTheme === theme.name }" class="ms-4 fw-semibold"
+                                    :href="theme.path" @click="setActiveTheme(theme.name)">
+                                    {{ theme.name }}
+                                </a>
                             </li>
                         </ul>
                     </div>
 
                     <!-- Buttons -->
                     <div class="col-2 buttons text-end">
-                        <span>Aa</span>
-                        <span><i class="fa-regular fa-image"></i></span>
+                        <span :class="{ 'active': activeButton === 'Text' }" @click="setActiveButton('Text')"
+                            class="text">Aa</span>
+                        <span :class="{ 'active': activeButton === 'Img' }" @click="setActiveButton('Img')"
+                            class="img"><i class="fa-regular fa-image"></i></span>
                     </div>
 
                 </div>
             </div>
         </div>
+
         <!-- Themes -->
         <div id="themes">
             <div class="container">
@@ -252,12 +267,12 @@ header {
             li a:hover {
                 color: $black;
                 border-bottom: 5px solid $red;
-                padding-bottom: 21px;
+                padding-bottom: 22px;
             }
 
             li a.active {
                 border-bottom: 5px solid $red;
-                padding-bottom: 21px;
+                padding-bottom: 22px;
             }
         }
 
