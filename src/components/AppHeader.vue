@@ -63,7 +63,7 @@ export default {
                         <div class="col col-6 col-lg-1 text-center">
                             <a href="">Contribuisci</a>
                         </div>
-                        <div class="col col-6 col-lg-1">
+                        <div class="col col-6 col-lg-2">
                             <a href="">Abbonati</a>
                         </div>
                     </div>
@@ -230,6 +230,11 @@ header {
 
         .col {
             height: 50px;
+
+            @media screen and (min-width: 992px) {
+                height: 70px;
+
+            }
 
             &:first-child {
                 border-right: 2px solid;

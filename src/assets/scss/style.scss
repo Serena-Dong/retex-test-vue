@@ -13,9 +13,6 @@ body {
     background-color: #FFFFFF;
 }
 
-[class^="container"] {
-    min-height: 40px;
-}
 
 /* UTILS */
 ul {
@@ -38,7 +35,8 @@ a {
     display: none;
 }
 
-img {
+img,
+.bg-color {
     object-fit: cover;
     width: 100%;
     height: 100%;

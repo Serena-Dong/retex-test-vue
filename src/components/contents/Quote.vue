@@ -34,7 +34,7 @@ export default {
     padding: 2rem 0;
 
     @media screen and (min-width: 992px) {
-        background-image: url("img/bg-quote.png");
+        background-image: url("img/bg-img/bg-quote.png");
         background-repeat: no-repeat;
         background-size: cover;
         background-position: center;
