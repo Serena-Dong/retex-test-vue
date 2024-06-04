@@ -2,25 +2,26 @@
 export default {
     name: 'card',
     props: {
-        card: Object
+        card: Object || Array
     }
 }
 </script>
 
 <template>
-    <div :id="card.type" class="card">
+    <div :id="card.type" class="card" :class="'font-' + card.fontColor">
 
         <!-- Img -->
-        <div id="bg-img" class="img-container">
-            <img :src="'/img/' + card.img" alt="">
+        <div id="bg-img" class="img-container" :class="card.showBg ? 'isShowed' : ''">
+            <img v-if="card.bgImg" :src="'/img/bg-img/' + card.bgImg" alt="">
+            <div class="bg-color" v-if="card.bgColor" :class="'bg-' + card.bgColor"></div>
 
             <!-- Buttons on the img -->
             <div v-if="card.buttons" class="buttons">
-                <div class="btn img-button">
+                <div v-if="card.buttons.img" class="btn img-button">
                     <a href="">
                         <i class="fa-regular fa-image"></i></a>
                 </div>
-                <div class="btn play-button">
+                <div v-if="card.buttons.video" class="btn play-button">
                     <a href="">
                         <i class="fa-solid fa-play"></i>
                     </a>
@@ -52,12 +53,12 @@ export default {
             <!-- Author -->
             <div id="author">
                 <div class="img-container">
-                    <img :src="'/img/authors/' + card.authorImg" alt="">
+                    <img :src="'/img/authors/' + card.author.img" alt="">
                 </div>
-                <div class="text-container">
-                    <p class="author-name">Di {{ card.author }}</p>
+                <div class=" text-container">
+                    <p class="author-name">Di {{ card.author.name }}</p>
                     <p class="date"> {{ card.date }}</p>
-                    <a href=""><i class="fa-solid fa-arrow-right"></i></a>
+                    <a href=""><i class="fa-solid fa-arrow-right arrow"></i></a>
                 </div>
             </div>
         </div>
@@ -76,6 +77,12 @@ export default {
 
     width: 100%;
     height: 100%;
+
+    @media screen and (min-width: 992px) {
+        border-bottom: none;
+
+        border: 1px solid white;
+    }
 
     // IMG
     #bg-img {
@@ -98,6 +105,7 @@ export default {
         }
     }
 
+    // TEXTS
     .text-container {
         position: static;
 
@@ -105,7 +113,7 @@ export default {
 
         @media screen and (min-width: 992px) {
             position: absolute;
-            bottom: 0;
+            top: 0;
             left: 0;
             padding: 2rem 2.5rem;
 
@@ -122,6 +130,9 @@ export default {
                 color: $white;
 
             }
+
+            border: none;
+
 
             &:hover {
                 h4 {
@@ -222,7 +233,7 @@ export default {
                     font-size: 0.8rem;
                 }
 
-                i.fa-arrow-right {
+                i.arrow {
                     display: none;
 
                     @media screen and (min-width: 992px) {
@@ -243,7 +254,39 @@ export default {
 
 }
 
-// IINTRO CARD
+
+
+// # CONDITIONALS
+
+// IMG is Showed
+
+.card {
+    .isShowed {
+        display: block !important;
+        padding: 1rem;
+
+        @media screen and (min-width: 992px) {
+            padding: 0;
+        }
+    }
+}
+
+.font-black {
+
+    .text-container,
+    #title,
+    i.arrow {
+        color: $black !important;
+
+        @media screen and (min-width: 992px) {
+            color: $black !important;
+        }
+    }
+}
+
+// # CARDS
+
+// Intro Card
 #intro {
     #bg-img {
         width: 100%;
@@ -256,6 +299,7 @@ export default {
 
     .text-container {
         position: absolute;
+        top: unset;
         bottom: 0;
 
         #title,
@@ -264,19 +308,24 @@ export default {
         }
     }
 
-    #author i.fa-arrow-right {
+    #author i.arrow {
         display: none;
     }
 }
 
-// CARD with Video
+
+// Video Card
 #video {
     #bg-img {
         display: block;
         padding: 1rem;
 
+        height: 250px;
+
+
         @media screen and (min-width: 992px) {
             padding: 0;
+            height: 100%;
         }
     }
 
@@ -285,6 +334,8 @@ export default {
 
         @media screen and (min-width: 992px) {
             position: absolute;
+            top: unset;
+            bottom: 0 !important;
             padding: 3rem;
 
             color: $white;
@@ -316,8 +367,8 @@ export default {
 
         .play-button {
             position: absolute;
-            bottom: 1rem;
-            right: 1rem;
+            bottom: 1.1rem;
+            right: 1.1rem;
             border-radius: 0;
         }
     }
