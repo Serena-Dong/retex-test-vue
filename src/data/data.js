@@ -102,61 +102,257 @@ const headerData = {
 const mainData = {
     cards: {
         intro: {
+            showBg: false,
             type: "intro",
-            img: "intro.jpeg",
+            fontColor: "white",
+            bgImg: "intro.jpeg",
             title: "Rocella Jonica, la Lampedusa che l'italia ignora",
-            author: "Alessandro Puglia",
-            authorImg: "alessandro-puglio.jpeg",
             date: "22 Giugno 2022",
+            author: {
+                name: "Alessandro Puglia",
+                img: "alessandro-puglia.jpeg"
+            },
             tag: {
                 text: "migranti",
                 bgColor: "white"
             }
         },
-        containerOne: {
+        containerFirst: {
             colMainLeft: {
+                showBg: true,
                 type: "video",
-                img: "video.jpeg",
+                fontColor: "white",
+                bgImg: "video.jpeg",
                 title: "Il collasso dei ghiacciai negli scatti del fotografo ambientale Fabiano Ventura",
-                author: "Gilda Sciortino",
-                authorImg: "gilda-sciortino.jpeg",
                 date: "14 Luglio 2022",
+                author: {
+                    name: "Gilda Sciortino",
+                    img: "gilda-sciortino.jpeg"
+                },
                 tag: {
                     text: "allarmi",
                     bgColor: "l-green"
                 },
                 buttons: {
-                    img: "",
-                    video: ""
+                    img: true,
+                    video: true
                 }
             },
             colTop: {
+                showBg: false,
                 type: "podcast",
-                img: "startupper.jpeg",
+                fontColor: "white",
+                bgImg: "startupper.jpeg",
                 title: "Gli startupper? Li trovi al bistrot. Così il DumBo incuba relazioni",
-                author: "Diletta Grella",
+                author: "",
                 authorImg: "gilda-sciortino.jpeg",
                 date: "14 Luglio 2022",
+                author: {
+                    name: "Diletta Grella",
+                    img: "gilda-sciortino.jpeg"
+                },
                 tag: {
-                    text: "ESPERIMENTI",
+                    text: "esperimenti",
                     bgColor: "l-cyan"
                 }
             },
             colBottom: {
+                showBg: false,
                 type: "text",
-                img: "ukraine.png",
+                fontColor: "white",
+                bgImg: "ukraine.png",
                 title: "Nelle città italiane tutti in piazza per e con Kiev",
-                author: "Anna Spena",
-                authorImg: "anna-spena.jpeg",
                 date: "14 Luglio 2022",
+                author: {
+                    name: "Anna Spena",
+                    img: "anna-spena.jpeg"
+                },
                 tag: {
                     text: "UCRAINA",
                     bgColor: "l-pink"
                 },
             },
 
-        }
+        },
+        containerSecond: {
+            col: [
+                {
+                    showBg: true,
+                    type: "text",
+                    fontColor: "white",
+                    bgColor: "red",
+                    title: "“Qui Odessa”, fotografie, progetti e solidarietà",
+                    date: "14 Luglio 2022",
+                    author: {
+                        name: "Redazione",
+                        img: "redazione.png"
+                    },
+                    tag: {
+                        text: "progetto arca",
+                        bgColor: "white"
+                    }
+                },
+                {
+                    showBg: false,
+                    type: "text",
+                    fontColor: "white",
+                    bgImg: "startupper.jpeg",
+                    title: "“Qui Odessa”, fotografie, progetti e solidarietà",
+                    date: "14 Luglio 2022",
+                    author: {
+                        name: "Luca Cereda",
+                        img: "gilda-sciortino.jpeg"
+                    },
+                    tag: {
+                        text: "adolescenti",
+                        bgColor: "l-cyan"
+                    }
+                },
+                {
+                    showBg: false,
+                    type: "text",
+                    fontColor: "white",
+                    bgImg: "ukraine.png",
+                    title: "““Qui Odessa”, fotografie, progetti e solidarietà",
+                    date: "14 Luglio 2022",
+                    author: {
+                        name: "Emilliano Moccia",
+                        img: "emilliano-moccia.jpeg"
+                    },
+                    tag: {
+                        text: "economia civile",
+                        bgColor: "l-pink"
+                    },
+                }
+            ]
+        },
+        containerThird: {
+            colLeft: {
+                showBg: false,
+                type: "podcast",
+                fontColor: "white",
+                bgImg: "sport.jpeg",
+                title: "Troppi abusi nello sport minorile, il governo interviene",
+                date: "14 Luglio 2022",
+                author: {
+                    name: "Gilda Sciortino",
+                    img: "gilda-sciortino.jpeg"
+                },
+                tag: {
+                    text: "esperimenti",
+                    bgColor: "l-cyan"
+                }
+            },
+            colRight: {
+                showBg: true,
+                type: "video",
+                fontColor: "white",
+                bgImg: "donne.jpeg",
+                title: "Donne e nuove generazioni: con loro riparte l’Italia",
+                date: "14 Luglio 2022",
+                author: {
+                    name: "Gilda Sciortino",
+                    img: "gilda-sciortino.jpeg"
+                },
+                tag: {
+                    text: "allarmi",
+                    bgColor: "l-green"
+                }
+            }
+
+        },
+        containerForth: {
+            col: {
+                showBg: true,
+                type: "video",
+                fontColor: "white",
+                bgImg: "kasbah.png",
+                title: "La Kasbah mazarese nella quale si gusta la cultura araba",
+                date: "22 Giugno 2022",
+                author: {
+                    name: "Alessandro Puglia",
+                    img: "alessandro-puglia.jpeg"
+                },
+                tag: {
+                    text: "Impresa Sociale",
+                    bgColor: "white"
+                },
+                buttons: {
+                    video: true
+                }
+            }
+        },
+        containerFifth: {
+            col: [{
+                showBg: false,
+                type: "text",
+                fontColor: "white",
+                bgImg: "startupper.jpeg",
+                title: "Uccisa ad Haiti suor Luisa, era l'angelo dei bambini",
+                date: "14 Luglio 2022",
+                author: {
+                    name: "Luca Cereda",
+                    img: "gilda-sciortino.jpeg"
+                },
+                tag: {
+                    text: "adolescenti",
+                    bgColor: "l-cyan"
+                }
+            },
+            {
+                showBg: true,
+                type: "text",
+                fontColor: "white",
+                bgColor: "red",
+                title: "“Qui Odessa”, fotografie, progetti e solidarietà",
+                date: "14 Luglio 2022",
+                author: {
+                    name: "Redazione",
+                    img: "redazione.png"
+                },
+                tag: {
+                    text: "progetto arca",
+                    bgColor: "white"
+                }
+            },
+            {
+                showBg: false,
+                type: "text",
+                fontColor: "white",
+                bgImg: "startupper.jpeg",
+                title: "Sostenibilità sociale: accordo tra Dynamo Academy e Acsi",
+                date: "14 Luglio 2022",
+                author: {
+                    name: "Luca Cereda",
+                    img: "gilda-sciortino.jpeg"
+                },
+                tag: {
+                    text: "adolescenti",
+                    bgColor: "l-cyan"
+                }
+            },
+            {
+                showBg: false,
+                type: "text",
+                fontColor: "black",
+                bgColor: "white",
+                title: "“Lisa, il modello Croce Rossa per l'inclusione lavorativa",
+                date: "14 Luglio 2022",
+                author: {
+                    name: "Emilliano Moccia",
+                    img: "emilliano-moccia.jpeg"
+                },
+                tag: {
+                    text: "economia civile",
+                    bgColor: "l-pink"
+                },
+            }
+            ]
+        },
     },
+
+
+
     banner: {
         title: "Il tuo supporto è fondamentale",
         link: {
